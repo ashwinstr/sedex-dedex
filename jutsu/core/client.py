@@ -65,7 +65,7 @@ class _AbstractSedex(Methods, RawClient):
         """ Load plugin to Sedex """
         _LOG.debug(_LOG_STR, f"Importing {name}")
         _IMPORTED.append(
-            importlib.import_module(f"sedex.plugins.{name}"))
+            importlib.import_module(f"jutsu.plugins.{name}"))
         if reload_plugin:
             _IMPORTED[-1] = importlib.reload(_IMPORTED[-1])
         plg = _IMPORTED[-1]
