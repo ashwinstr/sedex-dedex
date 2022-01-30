@@ -18,18 +18,17 @@ import time
 from dotenv import get_key, load_dotenv, set_key, unset_key
 from pyrogram.types import User
 
-from jutsu import Config, Message, get_collection, userge
+from jutsu import Config, Message, get_collection, sedex
 from jutsu.core.ext import RawClient
 from jutsu.utils import runcmd, terminate
 
 SAVED_SETTINGS = get_collection("CONFIGS")
 DISABLED_CHATS = get_collection("DISABLED_CHATS")
-FROZEN = get_collection("FROZEN")
 UPDATE_MSG = get_collection("UPDATE_MSG")
 
 MAX_IDLE_TIME = 300
-LOG = userge.getLogger(__name__)
-CHANNEL = userge.getCLogger(__name__)
+LOG = sedex.getLogger(__name__)
+CHANNEL = sedex.getCLogger(__name__)
 
 
 async def _init() -> None:
@@ -48,7 +47,7 @@ async def _init() -> None:
             Config.DISABLED_CHATS.add(i["_id"])
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "restart",
     about={
         "header": "Restarts the bot and reload all plugins",
@@ -65,15 +64,15 @@ async def _init() -> None:
     allow_channels=False,
 )
 async def restart_(message: Message):
-    """restart USERGE-X"""
-    await message.edit("`Restarting USERGE-X Services`", log=__name__)
-    LOG.info("USERGE-X Services - Restart initiated")
+    """restart SEDEX"""
+    await message.reply("`Restarting SEDEX Services`", log=__name__)
+    LOG.info("SEDEX Services - Restart initiated")
     if "t" in message.flags:
         shutil.rmtree(Config.TMP_PATH, ignore_errors=True)
     if "log" in message.flags:
         await message.edit("Restarting <b>logs</b>...", del_in=5)
         await runcmd("bash run")
-        asyncio.get_event_loop().create_task(userge.restart())
+        asyncio.get_event_loop().create_task(sedex.restart())
         return
     if "d" in message.flags:
         shutil.rmtree(Config.DOWN_PATH, ignore_errors=True)
@@ -82,7 +81,6 @@ async def restart_(message: Message):
             update = await message.edit(
                 "`Heroku app found, trying to restart dyno...\nthis will take upto 30 sec`"
             )
-            await FROZEN.drop()
             be_update = time.time()
             await UPDATE_MSG.update_one(
                 {"_id": "UPDATE_MSG"},
@@ -108,19 +106,18 @@ async def restart_(message: Message):
             await UPDATE_MSG.update_one(
                 {"_id": "UPDATE_MSG"}, {"$set": {"process": "restarted"}}, upsert=True
             )
-            await FROZEN.drop()
-            asyncio.get_event_loop().create_task(userge.restart(hard=True))
+            asyncio.get_event_loop().create_task(sedex.restart(hard=True))
     else:
         await message.edit("`Restarting [SOFT] ...`", del_in=1)
-        asyncio.get_event_loop().create_task(userge.restart())
+        asyncio.get_event_loop().create_task(sedex.restart())
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "shutdown", about={"header": "shutdown USERGE-X :)"}, allow_channels=False
 )
 async def shutdown_(message: Message) -> None:
     """shutdown USERGE-X"""
-    await message.edit("`shutting down ...`")
+    await message.reply("`shutting down ...`")
     if Config.HEROKU_APP:
         try:
             Config.HEROKU_APP.process_formation()["worker"].scale(0)
@@ -133,7 +130,7 @@ async def shutdown_(message: Message) -> None:
     terminate()
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "setvar",
     about={
         "header": "set var",
@@ -192,7 +189,7 @@ async def setvar_(message: Message) -> None:
         load_dotenv(file, override=True)
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "delvar",
     about={
         "header": "del var",
@@ -241,7 +238,7 @@ async def delvar_(message: Message) -> None:
         load_dotenv(file, override=True)
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "getvar",
     about={
         "header": "get var",
@@ -287,7 +284,7 @@ async def getvar_(message: Message) -> None:
             return
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "enhere",
     about={
         "header": "enable userbot in disabled chat.",
@@ -335,7 +332,7 @@ async def enable_userbot(message: Message):
         await message.err("chat_id not found!")
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "dishere",
     about={
         "header": "disable userbot in current chat.",
@@ -383,7 +380,7 @@ async def disable_userbot(message: Message):
             )
 
 
-@userge.on_cmd("listdisabled", about={"header": "List all disabled chats."})
+@sedex.on_cmd("listdisabled", about={"header": "List all disabled chats."})
 async def view_disabled_chats_(message: Message):
     if Config.DISABLED_ALL:
         # bot will not print this, but dont worry except log channel
@@ -397,7 +394,7 @@ async def view_disabled_chats_(message: Message):
         await message.edit(out_str, del_in=0)
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "sleep (\\d+)",
     about={"header": "sleep USERGE-X :P", "usage": "{tr}sleep [timeout in seconds]"},
     allow_channels=False,
@@ -410,18 +407,18 @@ async def sleep_(message: Message) -> None:
 
 
 async def _slp_wrkr(seconds: int) -> None:
-    await userge.stop()
+    await sedex.stop()
     await asyncio.sleep(seconds)
-    await userge.reload_plugins()
-    await userge.start()
+    await sedex.reload_plugins()
+    await sedex.start()
 
 
-@userge.on_user_status()
+@sedex.on_user_status()
 async def _user_status(_, user: User) -> None:
     Config.STATUS = user.status
 
 
-@userge.add_task
+@sedex.add_task
 async def _dyno_saver_worker() -> None:
     count = 0
     check_delay = 5

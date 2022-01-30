@@ -5,17 +5,16 @@ from time import time
 from git import Repo
 from git.exc import GitCommandError
 
-from jutsu import Config, Message, get_collection, pool, userge
+from jutsu import Config, Message, get_collection, pool, sedex
 from jutsu.utils import runcmd
 
-LOG = userge.getLogger(__name__)
-CHANNEL = userge.getCLogger(__name__)
+LOG = sedex.getLogger(__name__)
+CHANNEL = sedex.getCLogger(__name__)
 
-FROZEN = get_collection("FROZEN")
 UPDATE_MSG = get_collection("UPDATE_MSG")
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "update",
     about={
         "header": "Check Updates or Update USERGE-X",
@@ -37,7 +36,7 @@ UPDATE_MSG = get_collection("UPDATE_MSG")
 )
 async def check_update(message: Message):
     """check or do updates"""
-    await message.edit("`Checking for updates, please wait....`")
+    await message.reply("`Checking for updates, please wait....`")
     if Config.HEROKU_ENV:
         await message.edit(
             "**Heroku App detected !** Updates have been disabled for Safety.\n"
@@ -66,7 +65,7 @@ async def check_update(message: Message):
     if "prp" in flags:
         await message.edit("Updating <b><u>Userge-Plugins</u></b>...", log=__name__)
         await runcmd("bash run")
-        asyncio.get_event_loop().create_task(userge.restart())
+        asyncio.get_event_loop().create_task(sedex.restart())
     if len(flags) == 1:
         branch = flags[0]
     repo = Repo()
@@ -119,7 +118,7 @@ async def check_update(message: Message):
                 await UPDATE_MSG.update_one(
                     {"_id": "UPDATE_MSG"}, {"$set": {"process": "updated"}}, upsert=True
                 )
-                asyncio.get_event_loop().create_task(userge.restart(True))
+                asyncio.get_event_loop().create_task(sedex.restart(True))
         elif push_to_heroku:
             await _pull_from_repo(repo, branch)
         else:
@@ -133,7 +132,7 @@ async def check_update(message: Message):
             await _pull_from_repo(repo, branch)
             await CHANNEL.log(f"`Moved HEAD from [{active}] >>> [{branch}] !`")
             await message.edit("`Now restarting... Wait for a while!`", del_in=3)
-            asyncio.get_event_loop().create_task(userge.restart())
+            asyncio.get_event_loop().create_task(sedex.restart())
     if push_to_heroku:
         await _push_to_heroku(message, repo, branch)
 
@@ -161,7 +160,6 @@ def _get_updates_pr(git_u_n: str, branch: str) -> str:
 
 
 async def _pull_from_repo(repo: Repo, branch: str) -> None:
-    await FROZEN.drop()
     repo.git.checkout(branch, force=True)
     repo.git.reset("--hard", branch)
     repo.remote(Config.UPSTREAM_REMOTE).pull(branch, force=True)
@@ -202,7 +200,7 @@ def _heroku_helper(sent: Message, repo: Repo, branch: str) -> None:
         if not edited or (now - start_time) > 3 or message:
             edited = True
             start_time = now
-            userge.loop.create_task(sent.try_to_edit(f"{cur_msg}\n\n{prog}"))
+            sedex.loop.create_task(sent.try_to_edit(f"{cur_msg}\n\n{prog}"))
 
     cur_msg = sent.text.html
     repo.remote("heroku").push(
