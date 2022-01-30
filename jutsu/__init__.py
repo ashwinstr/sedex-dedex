@@ -14,7 +14,7 @@ from jutsu.core import (  # noqa
     Sedex,
     filters,
     Message,
-#    get_collection,
+    get_collection,
     pool
 )
 
