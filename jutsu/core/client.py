@@ -139,7 +139,7 @@ class Sedex(_AbstractUserge):
             await self._bot.stop()
         _LOG.info(_LOG_STR, "Stopping SEDEX")
         await super().stop()
-        _close_db()
+#        _close_db()
         pool._stop()  # pylint: disable=protected-access
 
     def begin(self, coro: Optional[Awaitable[Any]] = None) -> None:
@@ -154,7 +154,7 @@ class Sedex(_AbstractUserge):
                 if self.is_initialized:
                     await self.stop()
                 else:
-                    _close_db()
+#                    _close_db()
                     pool._stop()  # pylint: disable=protected-access
             # pylint: disable=expression-not-assigned
             [t.cancel() for t in asyncio.all_tasks() if t is not asyncio.current_task()]
