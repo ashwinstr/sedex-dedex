@@ -8,7 +8,7 @@
 #
 # All rights reserved.
 
-__all__ = ['Userge']
+__all__ = ['Sedex']
 
 import os
 import time
@@ -26,7 +26,7 @@ from jutsu.utils.exceptions import UsergeBotNotFound
 from jutsu.plugins import get_all_plugins
 from .methods import Methods
 from .ext import RawClient, pool
-from .database import _close_db
+# from .database import _close_db
 
 _LOG = logging.getLogger(__name__)
 _LOG_STR = "<<<!  #####  %s  #####  !>>>"
