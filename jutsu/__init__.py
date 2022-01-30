@@ -11,6 +11,11 @@
 from jutsu.logger import logging  # noqa
 from jutsu.config import Config, get_version  # noqa
 from jutsu.core import (  # noqa
-    Sedex, filters, Message, get_collection, pool)
+    Sedex,
+    filters,
+    Message,
+#    get_collection,
+    pool
+)
 
 sedex = Sedex()  # userge is the client name
