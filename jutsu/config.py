@@ -48,6 +48,7 @@ class Config:
     DOWN_PATH = "downloads/"
     CACHE_PATH = "jutsu/xcache"
     CMD_TRIGGER = os.environ.get("CMD_TRIGGER", ";")
+    SUDO_TRIGGER = os.environ.get("SUDO_TRIGGER")
     FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR")
     UNFINISHED_PROGRESS_STR = os.environ.get("UNFINISHED_PROGRESS_STR")
     UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO")
