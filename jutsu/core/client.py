@@ -118,7 +118,7 @@ class Sedex(_AbstractUserge):
             'api_hash': Config.API_HASH,
             'bot_token': Config.BOT_TOKEN
         }
-        kwargs['session_name'] = Config.HU_STRING_SESSION or ":memory:"
+        kwargs['session_name'] = ":memory:"
         super().__init__(**kwargs)
         self.executor.shutdown()
         self.executor = pool._get()  # pylint: disable=protected-access
