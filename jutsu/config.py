@@ -58,7 +58,7 @@ class Config:
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
     THUMB_PATH = DOWN_PATH + "thumb_image.jpg"
-    TMP_PATH = "sedex/plugins/temp/"
+    TMP_PATH = "jutsu/plugins/temp/"
     MAX_MESSAGE_LENGTH = 4096
     MSG_DELETE_TIMEOUT = 120
     WELCOME_DELETE_TIMEOUT = 120
