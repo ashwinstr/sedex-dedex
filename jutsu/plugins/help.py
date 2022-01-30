@@ -46,7 +46,7 @@ VOTE = get_collection("VOTES")
 SEEN_BY = get_collection("SEEN_BY")
 REPO_X = InlineQueryResultArticle(
     title="Repo",
-    input_message_content=InputTextMessageContent("**Here's how to setup USERGE-X** "),
+    input_message_content=InputTextMessageContent("**Here's how to setup SEDEX** "),
     url="https://github.com/ashwinstr/UX-jutsu",
     description="Setup Your Own",
     thumb_url="https://telegra.ph/file/8fa91f9c7f6f4f6b8fa6c.jpg",
@@ -54,10 +54,10 @@ REPO_X = InlineQueryResultArticle(
         [
             [
                 InlineKeyboardButton(
-                    "🔥 USERGE-X Repo", url="https://github.com/ashwinstr/UX-jutsu"
+                    "🔥 SEDEX Repo", url="https://github.com/ashwinstr/sedex-dedex"
                 ),
                 InlineKeyboardButton(
-                    "🚀 Deploy USERGE-X",
+                    "🚀 Deploy SEDEX",
                     url=(
                         "https://heroku.com/deploy?template="
                         "https://github.com/ash/MyGpack"
@@ -86,15 +86,15 @@ async def _init() -> None:
 
 
 @sedex.on_cmd(
-    "help", about={"header": "Guide to use USERGE commands"}, allow_channels=False
+    "help", about={"header": "Guide to use SEDEX commands"}, allow_channels=False
 )
 async def helpme(message: Message) -> None:
-    plugins = userge.manager.enabled_plugins
+    plugins = sedex.manager.enabled_plugins
     if not message.input_str:
         out_str = (
             f"""⚒ <b><u>(<code>{len(plugins)}</code>) Plugin(s) Available</u></b>\n\n"""
         )
-        cat_plugins = userge.manager.get_plugins()
+        cat_plugins = sedex.manager.get_plugins()
         for cat in sorted(cat_plugins):
             if cat == "plugins":
                 continue
@@ -130,7 +130,7 @@ async def helpme(message: Message) -> None:
                 )
             out_str += f"""📕 <b>Usage:</b>  <code>{Config.CMD_TRIGGER}help [command_name]</code>"""
         else:
-            commands = userge.manager.enabled_commands
+            commands = sedex.manager.enabled_commands
             key = key.lstrip(Config.CMD_TRIGGER)
             key_ = Config.CMD_TRIGGER + key
             if key in commands:
@@ -163,9 +163,9 @@ if sedex.has_bot:
                         show_alert=True,
                     )
             else:
-                user_dict = await userge.bot.get_user_dict(Config.OWNER_ID[0])
+                user_dict = await sedex.bot.get_user_dict(Config.OWNER_ID[0])
                 await c_q.answer(
-                    f"Only {user_dict['flname']} Can Access this...! Build Your USERGE-X",
+                    f"Only {user_dict['flname']} Can Access this...! Build Your SEDEX",
                     show_alert=True,
                 )
 
@@ -186,14 +186,14 @@ if sedex.has_bot:
                 p_num,
                 cur_pos,
                 lambda x: f"{_CATEGORY.get(x, '📁')} {x}",
-                userge.manager.get_all_plugins(),
+                sedex.manager.get_all_plugins(),
             )
         elif len(pos_list) == 2:
             buttons = parse_buttons(
                 p_num,
                 cur_pos,
                 lambda x: f"🔹 {x}",
-                userge.manager.get_all_plugins()[pos_list[-1]],
+                sedex.manager.get_all_plugins()[pos_list[-1]],
             )
         elif len(pos_list) == 3:
             _, buttons = plugin_data(cur_pos, p_num)
@@ -245,13 +245,13 @@ if sedex.has_bot:
         pos_list = cur_pos.split("|")
         if len(pos_list) == 4:
             if is_filter(pos_list[-1]):
-                flt = userge.manager.filters[pos_list[-1]]
+                flt = sedex.manager.filters[pos_list[-1]]
             else:
-                flt = userge.manager.commands[pos_list[-1]]
+                flt = sedex.manager.commands[pos_list[-1]]
             await getattr(flt, task)()
             text, buttons = filter_data(cur_pos)
         else:
-            plg = userge.manager.plugins[pos_list[-1]]
+            plg = sedex.manager.plugins[pos_list[-1]]
             await getattr(plg, task)()
             text, buttons = plugin_data(cur_pos)
         await callback_query.edit_message_text(
@@ -624,7 +624,7 @@ if sedex.has_bot:
                     return
 
             if string == "alive":
-                me = await userge.get_me()
+                me = await sedex.get_me()
                 alive_info = Bot_Alive.alive_info(me)
                 buttons = Bot_Alive.alive_buttons()
                 if Config.ALIVE_MEDIA_TYPE == "photo":
@@ -715,7 +715,7 @@ if sedex.has_bot:
             if len(string_split) == 2 and (string_split[0] == "ofox"):
                 codename = string_split[1]
                 t = TelegraphPoster(use_api=True)
-                t.create_api_token("Userge-X")
+                t.create_api_token("Sedex")
                 photo = "https://i.imgur.com/582uaSk.png"
                 api_host = "https://api.orangefox.download/v2/device/"
                 try:
@@ -808,7 +808,7 @@ if sedex.has_bot:
                         )
                     )
                 else:
-                    bot_name = (await userge.bot.get_me()).username
+                    bot_name = (await sedex.bot.get_me()).username
                     if len(str_y) == 2:
                         link = f"https://t.me/{bot_name}?start=spoiler_{str_y[1]}"
                         buttons = [
@@ -916,7 +916,7 @@ if sedex.has_bot:
                                 inline_db["media_valid"]
                                 and int(inline_db["media_id"]) != 0
                             ):
-                                saved_msg = await userge.bot.get_messages(
+                                saved_msg = await sedex.bot.get_messages(
                                     Config.LOG_CHANNEL_ID, int(inline_db["media_id"])
                                 )
                                 media_data = get_file_id(saved_msg)
@@ -952,7 +952,7 @@ if sedex.has_bot:
                                 )
 
             if str_y[0] == "voting" and len(str_y) == 2:
-                id_ = userge.rnd_id()
+                id_ = sedex.rnd_id()
                 up = 0
                 down = 0
                 anon = False
@@ -983,7 +983,7 @@ if sedex.has_bot:
                     )
 
             if str_y[0] == "anon_vote" and len(str_y) == 2:
-                id_ = userge.rnd_id()
+                id_ = sedex.rnd_id()
                 up = 0
                 down = 0
                 anon = True
@@ -1015,7 +1015,7 @@ if sedex.has_bot:
 
             if str_y[0] == "attent" and len(str_y) == 2:
                 notice = str_y[-1]
-                rnd_id = userge.rnd_id()
+                rnd_id = sedex.rnd_id()
                 btn_ = InlineKeyboardMarkup(
                     [
                         [
@@ -1092,7 +1092,7 @@ if sedex.has_bot:
                 user_name = str_x[1]
                 msg = str_x[2]
                 try:
-                    receiver = await userge.get_users(user_name)
+                    receiver = await sedex.get_users(user_name)
                 except (BadRequest, IndexError):
                     return
                 secret = os.path.join(Config.CACHE_PATH, "secret.json")
@@ -1219,7 +1219,7 @@ if sedex.has_bot:
                 )
         else:
             results.append(REPO_X)
-            owner_name = (await userge.get_me()).first_name
+            owner_name = (await sedex.get_me()).first_name
             await inline_query.answer(
                 results=results,
                 cache_time=1,
