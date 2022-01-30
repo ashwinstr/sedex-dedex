@@ -8,7 +8,7 @@
 #
 # All rights reserved.
 
-from jutsu import userge
+from jutsu import sedex
 
 if __name__ == "__main__":
-    userge.begin()
+    sedex.begin()
