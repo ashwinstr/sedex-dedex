@@ -1,10 +1,10 @@
 """ paste text to bin """
 
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -16,7 +16,7 @@ import aiofiles
 import aiohttp
 from aiohttp import client_exceptions
 
-from jutsu import Config, Message, userge
+from jutsu import Config, Message, sedex
 
 
 class PasteService:
@@ -244,7 +244,7 @@ def _get_code(url: str) -> Optional[str]:
     return code.split(".")[0]
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "paste",
     about={
         "header": "Pastes text or text_file to a bin service",
@@ -302,7 +302,7 @@ async def paste_(message: Message) -> None:
             )
 
 
-@userge.on_cmd(
+@sedex.on_cmd(
     "getpaste",
     about={
         "header": "Gets the content of a paste url",

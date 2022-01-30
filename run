@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -12,7 +12,7 @@ trap joinProc INT TERM
 
 declare -i bgProc
 declare -ir usr1=138
-declare -r cmd='. init/init.sh; runUserge "$@"'
+declare -r cmd='. init/init.sh; runSedex "$@"'
 
 setProc() {
     bgProc=$1

@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -17,7 +17,7 @@ from ...ext import RawClient
 
 class Terminate(RawClient):  # pylint: disable=missing-class-docstring
     async def terminate(self) -> None:
-        """ terminate userge """
+        """ terminate sedex """
         if not self.no_updates:
             for _ in range(self.workers):
                 self.dispatcher.updates_queue.put_nowait(None)

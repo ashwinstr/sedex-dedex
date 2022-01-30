@@ -17,12 +17,12 @@ UPDATE_MSG = get_collection("UPDATE_MSG")
 @sedex.on_cmd(
     "update",
     about={
-        "header": "Check Updates or Update USERGE-X",
+        "header": "Check Updates or Update SEDEX",
         "flags": {
             "-pull": "pull updates",
             "-branch": "Default is -alpha",
-            "-pr": "Userge-Plugins repo updates",
-            "-prp": "Userge-Plugins repo pull updates",
+            "-pr": "Sedex-Plugins repo updates",
+            "-prp": "Sedex-Plugins repo pull updates",
         },
         "usage": (
             "{tr}update : check updates from default branch\n"
@@ -63,7 +63,7 @@ async def check_update(message: Message):
         branch = "master"
         out = _get_updates_pr(git_u_n, branch)
     if "prp" in flags:
-        await message.edit("Updating <b><u>Userge-Plugins</u></b>...", log=__name__)
+        await message.edit("Updating <b><u>Sedex-Plugins</u></b>...", log=__name__)
         await runcmd("bash run")
         asyncio.get_event_loop().create_task(sedex.restart())
     if len(flags) == 1:
@@ -92,7 +92,7 @@ async def check_update(message: Message):
                 change_log + out, disable_web_page_preview=True
             )
         else:
-            await message.edit(f"**USERGE-X is up-to-date with [{branch}]**", del_in=5)
+            await message.edit(f"**SEDEX is up-to-date with [{branch}]**", del_in=5)
         return
     if pull_from_repo:
         if out:
@@ -103,7 +103,7 @@ async def check_update(message: Message):
             )
             if not push_to_heroku:
                 update = await message.edit(
-                    "**USERGE-X update process started!**\n"
+                    "**SEDEX update process started!**\n"
                     "`Now restarting... Wait for a while!`",
                 )
                 be_update = time()
@@ -148,7 +148,7 @@ def _get_updates(repo: Repo, branch: str) -> str:
 
 
 def _get_updates_pr(git_u_n: str, branch: str) -> str:
-    pr_up = f"https://github.com/{git_u_n}/Userge-Plugins"
+    pr_up = f"https://github.com/{git_u_n}/Sedex-Plugins"
     repo = Repo()
     repo.remote(pr_up).fetch(branch)
     upst = pr_up.rstrip("/")

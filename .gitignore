@@ -127,14 +127,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-userge/xcache/
+sedex/xcache/
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
 celerybeat.pid
 
-# USERGE-X
+# SEDEX
 .apt/
 .heroku/
 .profile.d/
@@ -145,7 +145,7 @@ config.env
 *.session
 unknown_errors.txt
 logs/
-userge/plugins/dev/
+sedex/plugins/dev/
 resources/base_profile_pic.jpg
 resources/mdfy_profile_pic.jpg
 resources/ProductSans-BoldItalic.ttf

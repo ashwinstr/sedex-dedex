@@ -1,9 +1,9 @@
 version: "3.7"
 
 services:
-  userge:
+  sedex:
       build:
-        context: https://github.com/code-rgb/userge-x.git#alpha
+        context: https://github.com/code-rgb/sedex-x.git#alpha
       depends_on:
         - mongo
       restart: on-failure
@@ -15,10 +15,10 @@ services:
   mongo:
       image: mongo
       volumes:
-        - mongo_userge:/data/db
+        - mongo_sedex:/data/db
       environment:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: example
 
 volumes:
-  mongo_userge:
+  mongo_sedex:

@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -51,7 +51,7 @@ _checkDefaultVars() {
         [PREFERRED_LANGUAGE]="en"
         [DOWN_PATH]="downloads"
         [UPSTREAM_REMOTE]="upstream"
-        [UPSTREAM_REPO]="https://github.com/code-rgb/USERGE-X"
+        [UPSTREAM_REPO]="https://github.com/code-rgb/SEDEX"
         [LOAD_UNOFFICIAL_PLUGINS]=true
         [CUSTOM_PLUGINS_REPO]=""
         [G_DRIVE_IS_TD]=true
@@ -139,8 +139,8 @@ _setupPlugins() {
         upgradePip
         installReq $tmp
         path=$(tr "[:upper:]" "[:lower:]" <<< $1)
-        rm -rf userge/plugins/$path/
-        mv $tmp/plugins/ userge/plugins/$path/
+        rm -rf sedex/plugins/$path/
+        mv $tmp/plugins/ sedex/plugins/$path/
         cp -r $tmp/resources/. resources/
         rm -rf $tmp/
         deleteLastMessage
@@ -150,7 +150,7 @@ _setupPlugins() {
 }
 
 _checkUnoffPlugins() {
-    _setupPlugins Xtra true $LOAD_UNOFFICIAL_PLUGINS https://github.com/ashwinstr/Userge-Plugins-Fork.git
+    _setupPlugins Xtra true $LOAD_UNOFFICIAL_PLUGINS https://github.com/ashwinstr/Sedex-Plugins-Fork.git
 }
 
 _checkCustomPlugins() {

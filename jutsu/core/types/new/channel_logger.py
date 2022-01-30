@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/uaudith/Userge/blob/master/LICENSE >
+# Please see < https://github.com/uaudith/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -30,8 +30,8 @@ def _gen_string(name: str) -> str:
 
 
 class ChannelLogger:
-    """ Channel logger for Userge """
-    def __init__(self, client: Union['_client.Userge', '_client.UsergeBot'], name: str) -> None:
+    """ Channel logger for Sedex """
+    def __init__(self, client: Union['_client.Sedex', '_client.SedexBot'], name: str) -> None:
         self._id = Config.LOG_CHANNEL_ID
         self._client = client
         self._string = _gen_string(name)
@@ -148,7 +148,7 @@ class ChannelLogger:
         return message_id
 
     async def forward_stored(self,
-                             client: Union['_client.Userge', '_client.UsergeBot'],
+                             client: Union['_client.Sedex', '_client.SedexBot'],
                              message_id: int,
                              chat_id: int,
                              user_id: int,
@@ -159,8 +159,8 @@ class ChannelLogger:
         """\nforward stored message from log channel.
 
         Parameters:
-            client (`Userge` | `UsergeBot`):
-                Pass Userge or UsergeBot.
+            client (`Sedex` | `SedexBot`):
+                Pass Sedex or SedexBot.
 
             message_id (`int`):
                 Message id of stored message.

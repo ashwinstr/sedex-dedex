@@ -5,27 +5,27 @@
    <br>
    <br>
 </p>
-<h1>USERGE-X</h1>
+<h1>SEDEX</h1>
 <b>Pluggable Telegram UserBot</b>
 <br>
 <br>
 
-[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/code-rgb/userge-x)
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg?&style=flat-square)](https://github.com/code-rgb/USERGE-X#copyright--license)
-[![Stars](https://img.shields.io/github/stars/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/stargazers)
-[![Forks](https://img.shields.io/github/forks/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/network/members)
-[![Issues Open](https://img.shields.io/github/issues/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/issues)
-[![Issues Closed](https://img.shields.io/github/issues-closed/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/issues?q=is:closed)
-[![PR Open](https://img.shields.io/github/issues-pr/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/pulls)
-[![PR Closed](https://img.shields.io/github/issues-pr-closed/code-rgb/USERGE-X?&style=flat-square)](https://github.com/code-rgb/USERGE-X/pulls?q=is:closed)
-![Repo Size](https://img.shields.io/github/repo-size/code-rgb/userge-x?style=flat-square)
-[![CodeFactor](https://www.codefactor.io/repository/github/code-rgb/userge-x/badge?&style=flat-square)](https://www.codefactor.io/repository/github/code-rgb/userge-x)
-[![DeepSource](https://deepsource.io/gh/code-rgb/userge-x.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/code-rgb/userge-x/?ref=repository-badge)
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/code-rgb/userge-x)
-[![Docker Image](https://img.shields.io/docker/image-size/varietyjames1/userge_x?color=blue&label=Docker%20Size&style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/r/varietyjames1/userge_x/tags?page=1&ordering=last_updated)
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/code-rgb/sedex-x)
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg?&style=flat-square)](https://github.com/code-rgb/SEDEX#copyright--license)
+[![Stars](https://img.shields.io/github/stars/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/stargazers)
+[![Forks](https://img.shields.io/github/forks/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/network/members)
+[![Issues Open](https://img.shields.io/github/issues/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/issues)
+[![Issues Closed](https://img.shields.io/github/issues-closed/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/issues?q=is:closed)
+[![PR Open](https://img.shields.io/github/issues-pr/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/pulls)
+[![PR Closed](https://img.shields.io/github/issues-pr-closed/code-rgb/SEDEX?&style=flat-square)](https://github.com/code-rgb/SEDEX/pulls?q=is:closed)
+![Repo Size](https://img.shields.io/github/repo-size/code-rgb/sedex-x?style=flat-square)
+[![CodeFactor](https://www.codefactor.io/repository/github/code-rgb/sedex-x/badge?&style=flat-square)](https://www.codefactor.io/repository/github/code-rgb/sedex-x)
+[![DeepSource](https://deepsource.io/gh/code-rgb/sedex-x.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/code-rgb/sedex-x/?ref=repository-badge)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/code-rgb/sedex-x)
+[![Docker Image](https://img.shields.io/docker/image-size/varietyjames1/sedex_x?color=blue&label=Docker%20Size&style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/r/varietyjames1/sedex_x/tags?page=1&ordering=last_updated)
 <br>
 
-**USERGE-X** is a Powerful , _Pluggable_ Telegram UserBot written in _Python_ using [Pyrogram](https://github.com/pyrogram/pyrogram).
+**SEDEX** is a Powerful , _Pluggable_ Telegram UserBot written in _Python_ using [Pyrogram](https://github.com/pyrogram/pyrogram).
 <br>
 <p align="center">
     <a href="https://telegram.dog/x_xtests"><img src="https://img.shields.io/badge/Support%20Group-USERGE--%F0%9D%91%BF-blue?&logo=telegram&style=social" width=220px></a></p>
@@ -68,7 +68,7 @@
 * First click The Button Above.
 * Fill `API_ID`, `API_HASH`, `DATABASE_URL`, `LOG_CHANNEL_ID`, `HEROKU_APP_NAME` and `HEROKU_API_KEY` (**required**)
 * Then fill Dual Mode vars : `OWNER_ID`, `BOT_TOKEN` and `HU_STRING_SESSION`
-* Then fill [other **non-required** vars](https://telegra.ph/Heroku-Vars-for-USERGE-X-08-25) later
+* Then fill [other **non-required** vars](https://telegra.ph/Heroku-Vars-for-SEDEX-08-25) later
 * Finally **hit deploy** button
 ## String Session
 **VAR ->** `HU_STRING_SESSION`
@@ -83,13 +83,13 @@
 ## Other Ways
 
 * With Docker 🐳 
-    <a href="https://github.com/code-rgb/USERGE-X/blob/alpha/resources/readmeDocker.md"><b>See Detailed Guide</b></a>
+    <a href="https://github.com/code-rgb/SEDEX/blob/alpha/resources/readmeDocker.md"><b>See Detailed Guide</b></a>
 
 * With Git, Python and pip 🔧
   ```bash
   # clone the repo
-  git clone https://github.com/code-rgb/userge-x.git
-  cd userge-x
+  git clone https://github.com/code-rgb/sedex-x.git
+  cd sedex-x
 
   # create virtualenv
   virtualenv -p /usr/bin/python3 venv
@@ -104,13 +104,13 @@
   # get string session and add it to config.env
   bash genStr
 
-  # finally run the USERGE-X ;)
+  # finally run the SEDEX ;)
   bash run
   ```
 
 
 <h2>Guide to Upstream Forked Repo</h2>
-<a href="https://telegra.ph/Upstream-Userge-Forked-Repo-Guide-07-04"><b>Upstream Forked Repo</b></a>
+<a href="https://telegra.ph/Upstream-Sedex-Forked-Repo-Guide-07-04"><b>Upstream Forked Repo</b></a>
 <br>
 <br>
 
@@ -141,13 +141,13 @@
 ## Example Plugin 
 
 ```python
-from userge import userge, Message, filters
+from sedex import sedex, Message, filters
 
-LOG = userge.getLogger(__name__)  # logger object
-CHANNEL = userge.getCLogger(__name__)  # channel logger object
+LOG = sedex.getLogger(__name__)  # logger object
+CHANNEL = sedex.getCLogger(__name__)  # channel logger object
 
 # add command handler
-@userge.on_cmd("test", about="help text to this command")
+@sedex.on_cmd("test", about="help text to this command")
 async def test_cmd(message: Message):
    LOG.info("starting test command...")  # log to console
    # some other stuff
@@ -156,7 +156,7 @@ async def test_cmd(message: Message):
    await CHANNEL.log("testing completed!")  # log to channel
 
 # add filters handler
-@userge.on_filters(filters.me & filters.private)  # filter my private messages
+@sedex.on_filters(filters.me & filters.private)  # filter my private messages
 async def test_filter(message: Message):
    LOG.info("starting filter command...")
    # some other stuff
@@ -173,4 +173,4 @@ async def test_filter(message: Message):
 * [PaperPlane](https://github.com/RaphielGang/Telegram-Paperplane)
 * [Uniborg](https://github.com/SpEcHiDe/UniBorg)
 ### Copyright & License 
-[**GNU General Public License v3.0**](https://github.com/code-rgb/USERGE-X/blob/alpha/LICENSE)
+[**GNU General Public License v3.0**](https://github.com/code-rgb/SEDEX/blob/alpha/LICENSE)

@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -24,7 +24,7 @@ from ... import client as _client  # pylint: disable=unused-import
 class Command(Filter):
     """ command class """
     def __init__(self, about: str, trigger: str, pattern: str,
-                 **kwargs: Union['_client.Userge', int, str, bool]) -> None:
+                 **kwargs: Union['_client.Sedex', int, str, bool]) -> None:
         self.about = about
         self.trigger = trigger
         self.pattern = pattern
@@ -34,7 +34,7 @@ class Command(Filter):
     def parse(cls, command: str,  # pylint: disable=arguments-differ
               about: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]],
               trigger: str, name: str, filter_me: bool,
-              **kwargs: Union['_client.Userge', int, bool]) -> 'Command':
+              **kwargs: Union['_client.Sedex', int, bool]) -> 'Command':
         """ parse command """
         pattern = f"^(?:\\{trigger}|\\{Config.SUDO_TRIGGER}){command.lstrip('^')}" if trigger \
             else f"^{command.lstrip('^')}"

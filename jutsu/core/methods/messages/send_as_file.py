@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -36,7 +36,7 @@ class SendAsFile(RawClient):  # pylint: disable=missing-class-docstring
         """\nYou can send large outputs as file
 
         Example:
-                @userge.send_as_file(chat_id=12345, text="hello")
+                @sedex.send_as_file(chat_id=12345, text="hello")
 
         Parameters:
             chat_id (``int`` | ``str``):

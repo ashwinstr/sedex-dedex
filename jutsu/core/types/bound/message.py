@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -31,9 +31,9 @@ _LOG_STR = "<<<!  :::::  %s  :::::  !>>>"
 
 
 class Message(RawMessage):
-    """ Modded Message Class For Userge """
+    """ Modded Message Class For Sedex """
     def __init__(self,
-                 client: Union['_client.Userge', '_client.UsergeBot'],
+                 client: Union['_client.Sedex', '_client.SedexBot'],
                  mvars: Dict[str, object], module: str, **kwargs: Union[str, bool]) -> None:
         self._filtered = False
         self._filtered_input_str = ''
@@ -44,7 +44,7 @@ class Message(RawMessage):
         super().__init__(client=client, **mvars)
 
     @classmethod
-    def parse(cls, client: Union['_client.Userge', '_client.UsergeBot'],
+    def parse(cls, client: Union['_client.Sedex', '_client.SedexBot'],
               message: RawMessage, **kwargs: Union[str, bool]) -> 'Message':
         """ parse message """
         mvars = vars(message)
@@ -57,7 +57,7 @@ class Message(RawMessage):
         return cls(client, mvars, **kwargs)
 
     @property
-    def client(self) -> Union['_client.Userge', '_client.UsergeBot']:
+    def client(self) -> Union['_client.Sedex', '_client.SedexBot']:
         """ returns client """
         return self._client
 

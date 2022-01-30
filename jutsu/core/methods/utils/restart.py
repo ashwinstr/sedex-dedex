@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -26,8 +26,8 @@ _LOG_STR = "<<<!  #####  %s  #####  !>>>"
 class Restart(RawClient):  # pylint: disable=missing-class-docstring
     async def restart(self, update_req: bool = False,  # pylint: disable=arguments-differ
                       hard: bool = False) -> None:
-        """ Restart the Abstract USERGE-X"""
-        _LOG.info(_LOG_STR, "Restarting USERGE-X")
+        """ Restart the Abstract SEDEX"""
+        _LOG.info(_LOG_STR, "Restarting SEDEX")
         await self.stop()
         if update_req:
             _LOG.info(_LOG_STR, "Installing Requirements...")
@@ -43,5 +43,5 @@ class Restart(RawClient):  # pylint: disable=missing-class-docstring
                     os.close(handler.fd)
             except Exception as c_e:  # pylint: disable=broad-except
                 print(_LOG_STR % c_e)
-            os.execl(sys.executable, sys.executable, '-m', 'userge')  # nosec
+            os.execl(sys.executable, sys.executable, '-m', 'sedex')  # nosec
             sys.exit()

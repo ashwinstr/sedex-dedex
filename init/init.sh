@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -16,41 +16,41 @@ trap handleSigTerm TERM
 trap handleSigInt INT
 trap 'echo hi' USR1
 
-initUserge() {
+initSedex() {
     printLogo
     assertPrerequisites
-    sendMessage "Initializing USERGE-X ..."
+    sendMessage "Initializing SEDEX ..."
     assertEnvironment
-    editLastMessage "Starting USERGE-X ..."
+    editLastMessage "Starting SEDEX ..."
     printLine
 }
 
-startUserge() {
+startSedex() {
     startLogBotPolling
-    runPythonModule userge "$@"
+    runPythonModule sedex "$@"
 }
 
-stopUserge() {
-    sendMessage "Exiting USERGE-X ..."
+stopSedex() {
+    sendMessage "Exiting SEDEX ..."
     endLogBotPolling
 }
 
 handleSigTerm() {
     log "Exiting With SIGTERM (143) ..."
-    stopUserge
+    stopSedex
     exit 143
 }
 
 handleSigInt() {
     log "Exiting With SIGINT (130) ..."
-    stopUserge
+    stopSedex
     exit 130
 }
 
-runUserge() {
-    initUserge
-    startUserge "$@"
+runSedex() {
+    initSedex
+    startSedex "$@"
     local code=$?
-    stopUserge
+    stopSedex
     return $code
 }

@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -28,13 +28,13 @@ _LOG_STR = "<<<!  {  (FLOOD CONTROL) sleeping %.2fs in %d  }  !>>>"
 
 
 class RawClient(Client):
-    """ userge raw client """
+    """ sedex raw client """
     DUAL_MODE = False
     LAST_OUTGOING_TIME = time()
     REQ_LOGS: Dict[int, 'ChatReq'] = {}
     REQ_LOCK = asyncio.Lock()
 
-    def __init__(self, bot: Optional['jutsu.core.client.UsergeBot'] = None, **kwargs) -> None:
+    def __init__(self, bot: Optional['jutsu.core.client.SedexBot'] = None, **kwargs) -> None:
         self._bot = bot
         super().__init__(**kwargs)
         self._channel = jutsu.core.types.new.ChannelLogger(self, "CORE")

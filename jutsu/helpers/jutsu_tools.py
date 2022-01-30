@@ -10,7 +10,7 @@ from pyrogram.raw.types import (
     InputReportReasonPornography,
     InputReportReasonSpam,
 )
-from jutsu import userge
+from jutsu import sedex
 
 
 # capitalise
@@ -146,7 +146,7 @@ def time_date_diff(year: int, month: int, date: int, hour: int, minute: int, dif
 
     
 async def admin_or_creator(chat_id: int, user_id: int) -> dict:
-    check_status = await userge.get_chat_member(chat_id, user_id)
+    check_status = await sedex.get_chat_member(chat_id, user_id)
     admin_ = True if check_status.status == "administrator" else False
     creator_ = True if check_status.status == "creator" else False
     json_ = {"is_admin": admin_, "is_creator": creator_}
@@ -156,11 +156,11 @@ async def admin_or_creator(chat_id: int, user_id: int) -> dict:
 async def admin_chats(user_id: int) -> dict:
     list_ = []
     try:
-        user_ = await userge.get_users(user_id)
+        user_ = await sedex.get_users(user_id)
     except:
         raise
         return
-    async for dialog in userge.iter_dialogs():
+    async for dialog in sedex.iter_dialogs():
         if dialog.chat.type in ["group", "supergroup", "channel"]:
             try:
                 check = await admin_or_creator(dialog.chat.id, user_.id)
@@ -187,24 +187,24 @@ async def get_response(msg, filter_user: Union[int, str] = 0, timeout: int = 5, 
     await asyncio.sleep(timeout)
     if filter_user:
         try:
-            user_ = await userge.get_users(filter_user)
+            user_ = await sedex.get_users(filter_user)
         except:
             raise "Invalid user."
     for msg_ in range(1, 6):
         msg_id = msg.message_id + msg_
         try:
-            response = await userge.get_messages(msg.chat.id, msg_id)
+            response = await sedex.get_messages(msg.chat.id, msg_id)
         except:
             raise "No response found."
         if response.reply_to_message.message_id == msg.message_id:
             if filter_user:
                 if response.from_user.id == user_.id:
                     if mark_read:
-                        await userge.send_read_acknowledge(msg.chat.id, response)
+                        await sedex.send_read_acknowledge(msg.chat.id, response)
                     return response
             else:
                 if mark_read:
-                    await userge.send_read_acknowledge(msg.chat.id, response)
+                    await sedex.send_read_acknowledge(msg.chat.id, response)
                 return response
         
     raise "No response found in time limit."

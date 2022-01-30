@@ -1,10 +1,10 @@
 # pylint: disable=missing-module-docstring
 #
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -22,7 +22,7 @@ from pyrogram import idle
 
 from jutsu import Config, logbot, logging
 from jutsu.utils import time_formatter
-from jutsu.utils.exceptions import UsergeBotNotFound
+from jutsu.utils.exceptions import SedexBotNotFound
 from jutsu.plugins import get_all_plugins
 from .methods import Methods
 from .ext import RawClient, pool
@@ -44,7 +44,7 @@ async def _complete_init_tasks() -> None:
     _INIT_TASKS.clear()
 
 
-class _AbstractUserge(Methods, RawClient):
+class _AbstractSedex(Methods, RawClient):
     @property
     def is_bot(self) -> bool:
         """ returns client is bot or not """
@@ -54,7 +54,7 @@ class _AbstractUserge(Methods, RawClient):
 
     @property
     def uptime(self) -> str:
-        """ returns userge uptime """
+        """ returns sedex uptime """
         return time_formatter(time.time() - _START_TIME)
 
     async def finalize_load(self) -> None:
@@ -62,10 +62,10 @@ class _AbstractUserge(Methods, RawClient):
         await asyncio.gather(_complete_init_tasks(), self.manager.init())
 
     async def load_plugin(self, name: str, reload_plugin: bool = False) -> None:
-        """ Load plugin to Userge """
+        """ Load plugin to Sedex """
         _LOG.debug(_LOG_STR, f"Importing {name}")
         _IMPORTED.append(
-            importlib.import_module(f"userge.plugins.{name}"))
+            importlib.import_module(f"sedex.plugins.{name}"))
         if reload_plugin:
             _IMPORTED[-1] = importlib.reload(_IMPORTED[-1])
         plg = _IMPORTED[-1]
@@ -106,13 +106,13 @@ class _AbstractUserge(Methods, RawClient):
         return len(reloaded)
 
 
-class Sedex(_AbstractUserge):
+class Sedex(_AbstractSedex):
     """ Sedex, the regex bot """
 
     has_bot = bool(Config.BOT_TOKEN)
 
     def __init__(self, **kwargs) -> None:
-        _LOG.info(_LOG_STR, "Setting USERGE-X Configs")
+        _LOG.info(_LOG_STR, "Setting SEDEX Configs")
         kwargs = {
             'api_id': Config.API_ID,
             'api_hash': Config.API_HASH,
@@ -143,7 +143,7 @@ class Sedex(_AbstractUserge):
         pool._stop()  # pylint: disable=protected-access
 
     def begin(self, coro: Optional[Awaitable[Any]] = None) -> None:
-        """ start userge """
+        """ start sedex """
         lock = asyncio.Lock()
         running_tasks: List[asyncio.Task] = []
 
@@ -164,7 +164,7 @@ class Sedex(_AbstractUserge):
 
         async def _shutdown(_sig: signal.Signals) -> None:
             global _SEND_SIGNAL  # pylint: disable=global-statement
-            _LOG.info(_LOG_STR, f"Received Stop Signal [{_sig.name}], Exiting USERGE-X ...")
+            _LOG.info(_LOG_STR, f"Received Stop Signal [{_sig.name}], Exiting SEDEX ...")
             await _finalize()
             if _sig == _sig.SIGUSR1:
                 _SEND_SIGNAL = True
@@ -175,7 +175,7 @@ class Sedex(_AbstractUserge):
         self.loop.run_until_complete(self.start())
         for task in self._tasks:
             running_tasks.append(self.loop.create_task(task()))
-        logbot.edit_last_msg("USERGE-X has Started Successfully !")
+        logbot.edit_last_msg("SEDEX has Started Successfully !")
         logbot.end()
         mode = "[DUAL]" if RawClient.DUAL_MODE else "[BOT]" if Config.BOT_TOKEN else "[USER]"
         try:
@@ -183,7 +183,7 @@ class Sedex(_AbstractUserge):
                 _LOG.info(_LOG_STR, f"Running Coroutine - {mode}")
                 self.loop.run_until_complete(coro)
             else:
-                _LOG.info(_LOG_STR, f"Idling USERGE-X - {mode}")
+                _LOG.info(_LOG_STR, f"Idling SEDEX - {mode}")
                 idle()
             self.loop.run_until_complete(_finalize())
         except (asyncio.exceptions.CancelledError, RuntimeError):

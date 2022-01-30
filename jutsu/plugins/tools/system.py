@@ -1,9 +1,9 @@
 """ system commands """
-# Copyright (C) 2020-2021 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+# Copyright (C) 2020-2021 by SedexTeam@Github, < https://github.com/SedexTeam >.
 #
-# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# This file is part of < https://github.com/SedexTeam/Sedex > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/UsergeTeam/Userge/blob/master/LICENSE >
+# Please see < https://github.com/SedexTeam/Sedex/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -53,7 +53,7 @@ async def _init() -> None:
         "header": "Restarts the bot and reload all plugins",
         "flags": {
             "-h": "restart hard",
-            "-log": "reload userge-plugins repo (if 'restart -h' doesn't update custom plugins)",
+            "-log": "reload sedex-plugins repo (if 'restart -h' doesn't update custom plugins)",
             "-t": "clean temp loaded plugins",
             "-d": "clean working folder",
         },
@@ -113,10 +113,10 @@ async def restart_(message: Message):
 
 
 @sedex.on_cmd(
-    "shutdown", about={"header": "shutdown USERGE-X :)"}, allow_channels=False
+    "shutdown", about={"header": "shutdown SEDEX :)"}, allow_channels=False
 )
 async def shutdown_(message: Message) -> None:
-    """shutdown USERGE-X"""
+    """shutdown SEDEX"""
     await message.reply("`shutting down ...`")
     if Config.HEROKU_APP:
         try:
@@ -396,11 +396,11 @@ async def view_disabled_chats_(message: Message):
 
 @sedex.on_cmd(
     "sleep (\\d+)",
-    about={"header": "sleep USERGE-X :P", "usage": "{tr}sleep [timeout in seconds]"},
+    about={"header": "sleep SEDEX :P", "usage": "{tr}sleep [timeout in seconds]"},
     allow_channels=False,
 )
 async def sleep_(message: Message) -> None:
-    """sleep USERGE-X"""
+    """sleep SEDEX"""
     seconds = int(message.matches[0].group(1))
     await message.edit(f"`sleeping {seconds} seconds...`")
     asyncio.get_event_loop().create_task(_slp_wrkr(seconds))
